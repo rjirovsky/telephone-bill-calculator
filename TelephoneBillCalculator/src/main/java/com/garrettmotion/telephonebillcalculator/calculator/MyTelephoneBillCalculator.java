@@ -20,7 +20,7 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
         var logs = new LogParser().parseLog(phoneLog);
         //TODO: Remove most frequent number calls
         for (var log : logs) {
-            cost.add(calculateCallCost(log));
+            cost = cost.add(calculateCallCost(log));
         }
 
         return cost;
@@ -35,15 +35,15 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
 
             if (minuteCounter <= 5) {
                 if (isInHighRange(current)) {
-                    cost.add(Rates.HIGH);
+                    cost = cost.add(Rates.HIGH);
                 } else {
-                    cost.add(Rates.LOW);
+                    cost = cost.add(Rates.LOW);
                 }
             } else {
-                cost.add(Rates.BONUS);
+                cost = cost.add(Rates.BONUS);
             }
 
-            current.plusMinutes(1);
+            current = current.plusMinutes(1);
             minuteCounter++;
         }
 
