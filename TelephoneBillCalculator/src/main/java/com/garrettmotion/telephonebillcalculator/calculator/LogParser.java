@@ -15,8 +15,10 @@ import java.util.List;
  */
 public class LogParser {
 
-    private static final String DELIMITER = ",";
-    private static final String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String DELIMITER = ",";
+    public static final String DATE_PATTERN = "yyyy-MM-dd";
+    public static final String TIME_PATTERN = "HH:mm:ss";
+    public static final String DATETIME_PATTERN = DATE_PATTERN + " " + TIME_PATTERN;
 
     public List<Call> parseLog(String phoneLogCsv) {
         var logs = new ArrayList<Call>();
