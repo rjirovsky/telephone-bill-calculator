@@ -12,15 +12,15 @@ import java.util.Objects;
  * @author 107546
  */
 public class Call {
-    private Double number;
+    private Long number;
     private LocalDateTime from;
     private LocalDateTime to;
 
-    public Double getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(Double number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
@@ -40,7 +40,7 @@ public class Call {
         this.to = to;
     }
 
-    public Call(Double number, LocalDateTime from, LocalDateTime to) {
+    public Call(Long number, LocalDateTime from, LocalDateTime to) {
         this.number = number;
         this.from = from;
         this.to = to;
@@ -54,9 +54,9 @@ public class Call {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.number);
-        hash = 23 * hash + Objects.hashCode(this.from);
-        hash = 23 * hash + Objects.hashCode(this.to);
+        hash = 29 * hash + Objects.hashCode(this.number);
+        hash = 29 * hash + Objects.hashCode(this.from);
+        hash = 29 * hash + Objects.hashCode(this.to);
         return hash;
     }
 
@@ -72,15 +72,7 @@ public class Call {
             return false;
         }
         final Call other = (Call) obj;
-        if (!Objects.equals(this.number, other.number)) {
-            return false;
-        }
-        if (!Objects.equals(this.from, other.from)) {
-            return false;
-        }
-        return Objects.equals(this.to, other.to);
+        return Objects.equals(this.number, other.number);
     }
-    
-    
-    
+
 }
