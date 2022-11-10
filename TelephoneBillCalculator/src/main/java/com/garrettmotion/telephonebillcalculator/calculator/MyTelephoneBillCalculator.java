@@ -6,6 +6,7 @@ package com.garrettmotion.telephonebillcalculator.calculator;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  *
@@ -17,16 +18,16 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
     public BigDecimal calculate(String phoneLog) {
         var cost = new BigDecimal(0.0);
 
-        var logs = new LogParser().parseLog(phoneLog);
+        var calls = new CallParser().parseFromCsv(phoneLog);
         //TODO: Remove most frequent number calls
-        for (var log : logs) {
-            cost = cost.add(calculateCallCost(log));
+        for (var call : calls) {
+            cost = cost.add(calculateSingleCallCost(call));
         }
 
         return cost;
     }
 
-    private BigDecimal calculateCallCost(Call call) {
+    private BigDecimal calculateSingleCallCost(Call call) {
         var cost = new BigDecimal(0.0);
 
         var current = call.getFrom().toLocalTime();
@@ -53,4 +54,6 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
     private boolean isInHighRange(LocalTime time) {
         return (time.isAfter(Rates.getHighStartTime()) || time.equals(Rates.getHighStartTime())) && time.isBefore(Rates.getLowStartTime());
     }
+    
+   
 }

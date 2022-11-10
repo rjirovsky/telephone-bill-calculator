@@ -13,14 +13,14 @@ import java.util.List;
  *
  * @author 107546
  */
-public class LogParser {
+public class CallParser {
 
     public static final String DELIMITER = ",";
     public static final String DATE_PATTERN = "yyyy-MM-dd";
     public static final String TIME_PATTERN = "HH:mm:ss";
     public static final String DATETIME_PATTERN = DATE_PATTERN + " " + TIME_PATTERN;
 
-    public List<Call> parseLog(String phoneLogCsv) {
+    public List<Call> parseFromCsv(String phoneLogCsv) {
         var logs = new ArrayList<Call>();
 
         var logStrings = phoneLogCsv.split(System.lineSeparator());
@@ -38,7 +38,7 @@ public class LogParser {
             throw new IllegalArgumentException("Log entry does't contain required parameters");
         }
 
-        var number = Double.valueOf(values[0].trim());
+        var number = Long.valueOf(values[0].trim());
         var from = parseDateTime(values[1].trim());
         var to = parseDateTime(values[2].trim());
         var call = new Call(number, from, to);
