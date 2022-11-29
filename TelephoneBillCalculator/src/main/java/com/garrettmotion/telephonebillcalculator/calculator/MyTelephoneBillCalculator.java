@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.garrettmotion.telephonebillcalculator.calculator;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
 
-/**
- *
- * @author 107546
- */
 public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
 
     @Override
@@ -19,7 +11,7 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
 
         var calls = new CallParser().parseFromCsv(phoneLog);
 
-        var mostFrequentNumber = MostFrequentNumberCalculator.getMostFrequentCall(calls);
+        var mostFrequentNumber = MostFrequentNumberCalculator.get(calls);
 
         for (var call : calls) {
             var cost = calculateSingleCallCost(call, call.getNumber().equals(mostFrequentNumber));

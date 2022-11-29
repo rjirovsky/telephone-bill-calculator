@@ -1,32 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.garrettmotion.telephonebillcalculator.calculator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
-/**
- *
- * @author 107546
- */
 public class MostFrequentNumberCalculator {
 
-    public static Long getMostFrequentCall(List<Call> calls) {
+    public static Long get(List<Call> calls) {
 
-        
-        Long mostFrequentNumber = null;
+        if(calls.isEmpty()){
+            return null;
+        }
 
         Map<Long, Integer> counter = new HashMap<>();
 
         for (var call : calls) {
             var current = counter.getOrDefault(call.getNumber(), 0);
-            counter.put(call.getNumber(), current++);
+            counter.put(call.getNumber(), ++current);
         }
+
+        List<Entry<Long, Integer>> sorted = new ArrayList<>(counter.entrySet());
         
-//        Collections.sort(calls);
+        
+        sorted.sort(Entry.comparingByValue());
+        
+        var mostFrequentNumber = sorted.get(sorted.size()-1).getKey();
+        System.out.println("Most frequent number: " + mostFrequentNumber);
 
         return mostFrequentNumber;
     }
