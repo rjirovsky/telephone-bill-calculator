@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  * @author 107546
  */
 public class Rates {
-    public static BigDecimal HIGH = new BigDecimal(1);
+    public static BigDecimal HIGH = new BigDecimal(1.0);
     public static BigDecimal LOW = new BigDecimal(0.5);
     public static BigDecimal BONUS = new BigDecimal(0.2);
     public static BigDecimal MOST_FREQUENT_NUMBER = new BigDecimal(0.0);

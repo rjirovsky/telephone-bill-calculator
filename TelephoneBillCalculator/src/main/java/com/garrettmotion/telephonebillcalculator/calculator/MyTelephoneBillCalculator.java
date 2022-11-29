@@ -21,7 +21,7 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
         return totalCost;
     }
 
-    private BigDecimal calculateSingleCallCost(Call call, boolean isMostFrequentNumber) {
+    public BigDecimal calculateSingleCallCost(Call call, boolean isMostFrequentNumber) {
         var cost = new BigDecimal(0.0);
 
         var current = call.getFrom().toLocalTime();
@@ -50,7 +50,10 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
     }
 
     private boolean isInHighRange(LocalTime time) {
-        return (time.isAfter(Rates.getHighStartTime()) || time.equals(Rates.getHighStartTime())) && time.isBefore(Rates.getLowStartTime());
+        var afterOrEqualHighRateStarted = time.isAfter(Rates.getHighStartTime()) || time.equals(Rates.getHighStartTime());
+        var beforeLowRateStarted = time.isBefore(Rates.getLowStartTime());
+        
+        return afterOrEqualHighRateStarted  && beforeLowRateStarted;
     }
 
 }
