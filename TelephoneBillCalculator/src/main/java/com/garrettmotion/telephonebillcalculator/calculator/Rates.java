@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.garrettmotion.telephonebillcalculator.calculator;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author 107546
- */
 public class Rates {
     public static BigDecimal HIGH = new BigDecimal(1.0);
     public static BigDecimal LOW = new BigDecimal(0.5);

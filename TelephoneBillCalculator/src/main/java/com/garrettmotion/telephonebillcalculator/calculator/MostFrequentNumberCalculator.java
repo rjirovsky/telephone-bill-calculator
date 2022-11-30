@@ -22,8 +22,6 @@ public class MostFrequentNumberCalculator {
         }
 
         List<Entry<Long, Integer>> sorted = new ArrayList<>(counter.entrySet());
-        
-        
         sorted.sort(Entry.comparingByValue());
         
         var mostFrequentNumber = sorted.get(sorted.size()-1).getKey();

@@ -52,8 +52,7 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
     private boolean isInHighRange(LocalTime time) {
         var afterOrEqualHighRateStarted = time.isAfter(Rates.getHighStartTime()) || time.equals(Rates.getHighStartTime());
         var beforeLowRateStarted = time.isBefore(Rates.getLowStartTime());
-        
-        return afterOrEqualHighRateStarted  && beforeLowRateStarted;
-    }
 
+        return afterOrEqualHighRateStarted && beforeLowRateStarted;
+    }
 }
