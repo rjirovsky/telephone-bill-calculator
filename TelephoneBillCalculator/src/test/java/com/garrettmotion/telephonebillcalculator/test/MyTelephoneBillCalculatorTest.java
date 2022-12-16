@@ -37,7 +37,19 @@ public class MyTelephoneBillCalculatorTest {
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
         assertEquals(BigDecimal.valueOf(1), cost);
     }
-    
+
+    @Test
+    public void getEndingInLowRateCallCostTest() {
+
+        var call = new Call(
+                420000000222L,
+                LocalDateTime.of(2022, Month.JANUARY, 3, 7, 59, 0),
+                LocalDateTime.of(2022, Month.JANUARY, 3, 7, 59, 59));
+
+        var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
+        assertEquals(BigDecimal.valueOf(0.5), cost);
+    }
+
     @Test
     public void getLowRateCallCostTest() {
 
@@ -74,7 +86,7 @@ public class MyTelephoneBillCalculatorTest {
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
         assertEquals(BigDecimal.valueOf(5), cost);
     }
-    
+
     @Test
     @Disabled
     public void getBonusRateAppliedCallCostTest() {
@@ -88,4 +100,5 @@ public class MyTelephoneBillCalculatorTest {
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
         assertEquals(BigDecimal.valueOf(5.2), cost);
     }
+
 }
