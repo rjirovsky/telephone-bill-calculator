@@ -13,6 +13,6 @@ public class TelephoneBillCalculatorCLI {
         var csv = Files.readString(new File(args[0]).toPath(), StandardCharsets.UTF_8);
         var cost = new MyTelephoneBillCalculator().calculate(csv);
         
-        System.out.println(Math.round(cost.doubleValue()*100)/100.0);
+        System.out.println("Total cost is " + Math.round(cost.doubleValue()*100)/100.0);
     }
 }
