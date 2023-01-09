@@ -100,5 +100,41 @@ public class MyTelephoneBillCalculatorTest {
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
         assertEquals(BigDecimal.valueOf(5.2), cost);
     }
+    
+    @Test
+    public void getOneMinuteCallCostTest() {
+        var call = new Call(
+                420000000222L,
+                LocalDateTime.of(2022, Month.JANUARY, 3, 10, 00, 00),
+                LocalDateTime.of(2022, Month.JANUARY, 3, 10, 01, 00));
+
+        var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
+        assertEquals(new BigDecimal("1.0"), cost);
+    }
+    
+    @Test
+    public void getTwoMinuteCallCostTest() {
+        var call = new Call(
+                420000000222L,
+                LocalDateTime.of(2022, Month.JANUARY, 3, 10, 00, 00),
+                LocalDateTime.of(2022, Month.JANUARY, 3, 10, 01, 01));
+
+        var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
+        assertEquals(new BigDecimal("2.0"), cost);
+    }
+    
+    /**
+     * 420374863964,2022-03-16 03:45:12,2022-03-16 04:47:05
+     */
+    @Test
+    public void getWrongCallCostTest() {
+        var call = new Call(
+                420374863964L,
+                LocalDateTime.of(2022, Month.MARCH, 16, 3, 45, 12),
+                LocalDateTime.of(2022, Month.MARCH, 16, 4, 47, 05));
+
+        var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
+        assertEquals(new BigDecimal("13.9"), cost);
+    }
 
 }
