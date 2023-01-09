@@ -15,6 +15,7 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
 
         for (var call : calls) {
             var cost = calculateSingleCallCost(call, call.getNumber().equals(mostFrequentNumber));
+            System.out.println(call.getNumber() + " cost is " + cost);
             totalCost = totalCost.add(cost);
         }
 
