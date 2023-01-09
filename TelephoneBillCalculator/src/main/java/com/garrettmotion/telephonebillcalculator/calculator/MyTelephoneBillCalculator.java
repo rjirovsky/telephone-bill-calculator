@@ -25,15 +25,15 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
     public BigDecimal calculateSingleCallCost(Call call, boolean isMostFrequentNumber) {
         var cost = new BigDecimal(0.0);
 
-        var current = call.getFrom().toLocalTime();
+        var current = call.getFrom();
         var minuteCounter = 1;
-        while (current.isBefore(call.getTo().toLocalTime()) || current.equals(call.getTo().toLocalTime())) {
+        while (current.isBefore(call.getTo())) {
 
             if (isMostFrequentNumber) {
                 cost = cost.add(Rates.MOST_FREQUENT_NUMBER);
             } else {
                 if (minuteCounter <= 5) {
-                    if (isInHighRange(current)) {
+                    if (isInHighRange(current.toLocalTime())) {
                         cost = cost.add(Rates.HIGH);
                     } else {
                         cost = cost.add(Rates.LOW);
