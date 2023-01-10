@@ -23,7 +23,7 @@ public class MyTelephoneBillCalculatorTest {
                 LocalDateTime.of(2022, Month.JANUARY, 3, 15, 00, 59));
 
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
-        assertEquals(BigDecimal.valueOf(2), cost);
+        assertEquals(new BigDecimal("2.0"), cost);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class MyTelephoneBillCalculatorTest {
                 LocalDateTime.of(2022, Month.JANUARY, 3, 8, 00, 59));
 
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
-        assertEquals(BigDecimal.valueOf(1), cost);
+        assertEquals(new BigDecimal("1.0"), cost);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MyTelephoneBillCalculatorTest {
                 LocalDateTime.of(2022, Month.JANUARY, 3, 11, 4, 59));
 
         var cost = new MyTelephoneBillCalculator().calculateSingleCallCost(call, false);
-        assertEquals(BigDecimal.valueOf(5), cost);
+        assertEquals(new BigDecimal("5.0"), cost);
     }
 
     @Test
