@@ -12,10 +12,11 @@ public class MyTelephoneBillCalculator implements ITelephoneBillCalculator {
         var calls = new CallParser().parseFromCsv(phoneLog);
 
         var mostFrequentNumber = MostFrequentNumberCalculator.get(calls);
-
+        System.out.println("Number,Cost");
         for (var call : calls) {
             var cost = calculateSingleCallCost(call, call.getNumber().equals(mostFrequentNumber));
-            System.out.println(call.getNumber() + " cost is " + cost);
+            // print single call cost
+            System.out.println(call.getNumber() + "," + cost);
             totalCost = totalCost.add(cost);
         }
 
